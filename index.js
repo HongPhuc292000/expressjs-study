@@ -1,6 +1,6 @@
 const express = require("express");
-const router1 = require("./apiRouter");
 const db = require("./models/config");
+const route = require('./routes');
 
 const app = express();
 const port = 3001;
@@ -13,11 +13,7 @@ app.use(
 );
 app.use(express.json());
 
-app.get("/", (req, res, next) => {
-  res.json("Home!");
-});
-
-app.use("/api/v1/", router1);
+route(app);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
